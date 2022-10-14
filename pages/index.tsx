@@ -1,6 +1,18 @@
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+
+  res.setHeader('cache-control', `s-maxage=${60 * 10}`);
+
+  return {
+    props: {
+      foo: '1',
+    }
+  };
+};
 
 export default function Home() {
   return (
